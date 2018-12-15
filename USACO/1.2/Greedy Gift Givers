@@ -1,0 +1,66 @@
+/*
+ID: q2670481
+TASK: gift1
+LANG: C++
+*/
+#include<bits/stdc++.h>
+using namespace std;
+int n;
+struct r{
+	string x;
+	int y;
+}a[11];
+
+void in(){
+	cin>>n;
+	
+	for(int i=1;i<=n;i++){
+		cin>>a[i].x;
+		a[i].y=0;
+	}
+	
+	string b;
+	while(cin>>b){
+		int j;
+		for(int i=1;i<=n;i++){
+			if(a[i].x==b){
+				j=i;
+				break;
+			}
+		}
+		
+		int q,p;
+		cin>>q>>p;
+		if(q==0||p==0)continue;
+		a[j].y-=q;
+		if(q%p){
+			a[j].y+=q%p;
+		}
+		
+		q/=p;
+		string c;
+		for(int i=1;i<=p;i++){
+			cin>>c;
+			for(int j=1;j<=n;j++){
+				if(a[j].x==c){
+					a[j].y+=q;
+					break;
+				}
+			}
+		}
+	}
+}
+
+void out(){
+	for(int i=1;i<=n;i++){
+		cout<<a[i].x<<" "<<a[i].y<<endl;
+	}
+}
+int main(){
+	freopen("gift1.in","r",stdin);
+	freopen("gift1.out","w",stdout);
+	in();
+	out();
+	return 0;
+}
+
